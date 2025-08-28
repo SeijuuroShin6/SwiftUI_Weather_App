@@ -10,15 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            LinearGradient(colors: [.blue, .white],
-                          startPoint: .topLeading,
-                          endPoint: .bottomTrailing)
-            .edgesIgnoringSafeArea(.all)
+            BackgroundView(topColor: .blue, bottomColor: Color("LightBlue"))
             VStack {
-                Text("Munich, BAV")
-                .font(.system(size: 33, weight: .medium,))
-                .foregroundColor(.white)
-                .padding()
+                CityTextView(city: "Munich, BAV")
                 
                 VStack(spacing: 1) {
                     Image(systemName: "cloud.sun.fill")
@@ -62,12 +56,17 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack {
-                    Button("Change Time of Day") {}
-                        .buttonStyle(.borderedProminent)
-                        .tint(.white)
-                        .foregroundColor(.blue)
-                        .font(.system(size: 23, weight: .bold))
+                    Button {
+                        print("tapped")
+                    } label: {
+                      Text("Change Time of Day")
+                        .frame(width: 280, height: 50)
+                        .background(Color.white)
+                        .font(.system(size: 21, weight: .bold))
+                        .cornerRadius(10)
+                    }
                 }
+                Spacer()
             }
         }
     }
@@ -101,5 +100,30 @@ struct WeatherDayView: View {
                 .font(.system(size: 25, weight: .bold))
                 .foregroundColor(.white)
         }
+    }
+}
+
+struct BackgroundView: View {
+
+    var topColor: Color
+    var bottomColor: Color
+
+    var body: some View {
+        LinearGradient(colors: [.blue, Color("LightBlue")],
+                       startPoint: .topLeading,
+                       endPoint: .bottomTrailing)
+        .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct CityTextView: View {
+    
+    var city: String
+    
+    var body: some View {
+        Text(city)
+        .font(.system(size: 33, weight: .medium,))
+        .foregroundColor(.white)
+        .padding()
     }
 }
