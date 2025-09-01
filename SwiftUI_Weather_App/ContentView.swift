@@ -103,7 +103,7 @@ struct BackgroundView: View {
                                                    isNight ? .gray : Color("LightBlue")]),
                        startPoint: .topLeading,
                        endPoint: .bottomTrailing)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea(edges:.all)
     }
 }
 
