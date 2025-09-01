@@ -51,11 +51,7 @@ struct ContentView: View {
                     Button {
                         print("tapped")
                     } label: {
-                      Text("Change Time of Day")
-                        .frame(width: 280, height: 50)
-                        .background(Color.white)
-                        .font(.system(size: 21, weight: .bold))
-                        .cornerRadius(10)
+                        WeatherButton(title: "Change Time Of Day", textColor: .blue, backgroundColor: .white)
                     }
                 }
                 Spacer()
