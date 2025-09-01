@@ -15,15 +15,7 @@ struct ContentView: View {
                 CityTextView(city: "Munich, BAV")
                 
                 VStack(spacing: 1) {
-                    Image(systemName: "cloud.sun.fill")
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 180, height: 180)
-                    
-                    Text("27°")
-                        .font(.system(size: 70, weight: .medium,))
-                        .foregroundColor(.white)
+                    MainWeatherView(imageName: "cloud.sun.fill", temperature: 27)
                 }
                 
 
@@ -125,5 +117,26 @@ struct CityTextView: View {
         .font(.system(size: 33, weight: .medium,))
         .foregroundColor(.white)
         .padding()
+    }
+}
+
+
+struct MainWeatherView: View {
+    var imageName: String
+    var temperature: Int
+    
+    var body: some View {
+        VStack(spacing: 1) {
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 180, height: 180)
+            
+            Text("\(temperature)°C")
+                .font(.system(size: 70, weight: .medium,))
+                .foregroundColor(.white)
+        }
+        
     }
 }
